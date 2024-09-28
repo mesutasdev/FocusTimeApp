@@ -23,6 +23,13 @@ Süre bittiğinde, bir uyarı mesajı görüntülenir.
 
 
 
+
+https://github.com/user-attachments/assets/f8859a88-3200-45bf-891e-da51c01e3eb2
+
+
+
+
+
 ## Kullanım
 
 1. Uygulamayı açtığınızda ana ekranda odaklanma süresi, geri sayım olarak bir daire içinde gösterilir.
