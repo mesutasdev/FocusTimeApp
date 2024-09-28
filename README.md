@@ -15,11 +15,10 @@ Süre bittiğinde, bir uyarı mesajı görüntülenir.
 ## Ekran Görüntüsü
 
 <img width="476" alt="Ekran Resmi 2024-02-16 13 14 56" src="https://github.com/user-attachments/assets/a73001ed-9588-497d-830a-a190e7e74257">
+<img width="476" alt="Ekran Resmi 2024-02-16 13 14 56" src="https://github.com/user-attachments/assets/7824b171-9b79-4c45-b2d8-9550af95863a">
+<img width="476" alt="Ekran Resmi 2024-02-16 13 14 56" src="https://github.com/user-attachments/assets/a9915508-18c2-4cb3-ba4c-75201821f5be">
+<img width="476" alt="Ekran Resmi 2024-02-16 13 14 56" src="https://github.com/user-attachments/assets/dbf06b09-d6d7-4f14-bdde-e5b3a61f65be">
 
-![Simulator Screenshot - iPhone 16 Pro - 2024-09-28 at 05 03 58](https://github.com/user-attachments/assets/a73001ed-9588-497d-830a-a190e7e74257)
-![Simulator Screenshot - iPhone 16 Pro - 2024-09-28 at 05 03 41](https://github.com/user-attachments/assets/7824b171-9b79-4c45-b2d8-9550af95863a)
-![Simulator Screenshot - iPhone 16 Pro - 2024-09-28 at 05 03 37](https://github.com/user-attachments/assets/a9915508-18c2-4cb3-ba4c-75201821f5be)
-![Simulator Screenshot - iPhone 16 Pro - 2024-09-28 at 05 03 33](https://github.com/user-attachments/assets/dbf06b09-d6d7-4f14-bdde-e5b3a61f65be)
 
 
 
