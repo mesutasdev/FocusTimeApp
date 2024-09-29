@@ -20,13 +20,7 @@ Süre bittiğinde, bir uyarı mesajı görüntülenir.
 <img width="200" alt="Ekran Resmi 2024-02-16 13 14 56" src="https://github.com/user-attachments/assets/7824b171-9b79-4c45-b2d8-9550af95863a">
 
 
-
-
-
 https://github.com/user-attachments/assets/f8859a88-3200-45bf-891e-da51c01e3eb2
-
-
-
 
 
 ## Kullanım
