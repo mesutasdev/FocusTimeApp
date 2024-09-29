@@ -1,6 +1,30 @@
 {
   "sourceLanguage" : "en",
   "strings" : {
+    "5 Minutes" : {
+
+    },
+    "10 Minutes" : {
+
+    },
+    "15 Minutes" : {
+
+    },
+    "20 Minutes" : {
+
+    },
+    "25 Minutes" : {
+
+    },
+    "35 Minutes" : {
+
+    },
+    "45 Minutes" : {
+
+    },
+    "55 Minutes" : {
+
+    },
     "Book" : {
       "localizations" : {
         "tr" : {
@@ -102,6 +126,9 @@
           }
         }
       }
+    },
+    "Select Focus Time" : {
+
     },
     "Start" : {
       "localizations" : {

@@ -1,33 +1,39 @@
 //
-//  FocusView.swift
+//  MeditationsFocus.swift
 //  FocusTime
 //
-//  Created by Mesut As Developer on 9/21/24.
+//  Created by Mesut As Developer on 9/28/24.
 //
 
 import SwiftUI
 
-struct FocusView: View {
+struct MeditationsFocus: View {
     
-    @State private var focusTime: Int = 1500 // 25 minutes (for seconds)
+    
+    @State private var focusTime: Int = 900 // 25 minutes (for seconds)
     @State private var timer : Timer?
     @State private var isActive = false
-    @State private var timeRemaining = 1500 // for back remaining
+    @State private var timeRemaining = 900 // for back remaining
     
     @State private var showAlert = false // Alert Control
     
+    @State private var focusTimeOptions = [300,600,900,1200]
+    @State private var selectedFocusTime: Int = 900
+    
+    
     var body: some View {
+        
         ZStack {
 //            backgroundColor
-            Color.blue.opacity(0.2)
+            Color.green.opacity(0.2)
                 .ignoresSafeArea()
             VStack{
                 
                 Spacer()
-     
+           
                 ZStack{
                     Circle()
-                        .strokeBorder(Color.blue.opacity(0.5),lineWidth: 50)
+                        .strokeBorder(Color.green.opacity(0.5),lineWidth: 50)
                         .frame(width: 300, height: 300, alignment: .top)
                       
                     
@@ -39,14 +45,35 @@ struct FocusView: View {
                         .bold()
               
                 }
-         
+                
                 Spacer()
+                
+                
+                Picker("Select Focus Time", selection: $selectedFocusTime){
+                    Text("5 Minutes").tag(300)
+                    Text("10 Minutes").tag(600)
+                    Text("15 Minutes").tag(900)
+                    Text("20 Minutes").tag(1200)
                     
-                Image(systemName: "moon.stars")
+                }
+                .pickerStyle(SegmentedPickerStyle())
+                .padding()
+                .onChange(of: selectedFocusTime) {
+                                   focusTime = $0
+                                   timeRemaining = $0
+                               }
+                
+                Image(systemName: "figure.mind.and.body")
                     .resizable()
                     .frame(width: 100, height: 100)
                     .padding()
-                TypewriterText(text: "Focus Time")
+                
+            
+        
+                TypewriterText(text: "Meditations Focus")
+                
+                
+                
                 Spacer()
                 
                 //           timer buttons for control
@@ -55,15 +82,13 @@ struct FocusView: View {
                     Button {
                         if isActive{
                             pauseTimer()
-                        
                         }else{
                             startTimer()
-                            
                         }
                     } label: {
                         Text(isActive ? "Pause" : "Start")
                             .frame(width: 120, height: 50)
-                            .background(isActive ? Color.red : Color.green)
+                            .background(isActive ? Color.red : Color.blue)
                             .foregroundColor(.white)
                             .cornerRadius(10)
                     }
@@ -73,7 +98,7 @@ struct FocusView: View {
                     } label: {
                         Text("Reset")
                             .frame(width: 120, height: 50)
-                            .background(.blue)
+                            .background(.green)
                             .foregroundColor(.white)
                             .cornerRadius(10)
                     }
@@ -89,7 +114,6 @@ struct FocusView: View {
    
         }
         
-    
         .alert(isPresented: $showAlert) {
             Alert(
                 title: Text("You did it!"),
@@ -97,11 +121,13 @@ struct FocusView: View {
                 primaryButton: .default(Text("Reboot")) {
                     resetTimer() // Yeniden başlat
                 },
-                secondaryButton: .cancel(Text("OK")) {
+                secondaryButton: .cancel(Text("OK")){
                     resetTimer()
                 }
             )
         }
+
+      
     }
     
     // Start timer
@@ -112,6 +138,7 @@ struct FocusView: View {
                 timeRemaining -= 1
             }else {
                 pauseTimer()
+//                buraya süre bitince uyarı eklenebilir
                 showAlert = true
                 print("Focus time over!")
             }
@@ -145,5 +172,5 @@ struct FocusView: View {
 
 
 #Preview {
-    FocusView()
+    MeditationsFocus()
 }

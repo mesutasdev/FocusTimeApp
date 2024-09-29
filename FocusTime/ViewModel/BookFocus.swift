@@ -1,75 +1,86 @@
 //
-//  MeditationsFocus.swift
+//  BookFocus.swift
 //  FocusTime
 //
 //  Created by Mesut As Developer on 9/28/24.
 //
 
+
 import SwiftUI
 
-struct MeditationsFocus: View {
+struct BookFocus: View {
     
-    @State private var focusTime: Int = 300 // 25 minutes (for seconds)
-    @State private var timer : Timer?
+    @State private var focusTime: Int = 2700 // 25 minutes (for seconds)
+    @State private var timer: Timer?
     @State private var isActive = false
-    @State private var timeRemaining = 300 // for back remaining
+    @State private var timeRemaining = 2700 // for back remaining
     
     @State private var showAlert = false // Alert Control
     
+    @State private var focusTimeOptions = [2100,2700,3300]
+    @State private var selectedFocusTime: Int = 2700
+    
+   
     
     var body: some View {
-        
         ZStack {
-//            backgroundColor
-            Color.green.opacity(0.2)
+            // Background Color
+            Color.purple.opacity(0.2)
                 .ignoresSafeArea()
-            VStack{
-                
+            VStack {
                 Spacer()
-           
-                ZStack{
+                
+                ZStack {
                     Circle()
-                        .strokeBorder(Color.green.opacity(0.5),lineWidth: 50)
+                        .strokeBorder(Color.purple.opacity(0.6), lineWidth: 50)
                         .frame(width: 300, height: 300, alignment: .top)
-                      
                     
-                    //        Focus shower time
+                    // Focus shower time
                     Text(timeString(time: timeRemaining))
-                        .foregroundColor(Color.textMy)
+                        .foregroundColor(Color.primary)
                         .font(.largeTitle)
                         .fontWeight(.heavy)
                         .bold()
-              
                 }
                 
+                Picker("Select Focus Time", selection: $selectedFocusTime) {
+                    Text("35 Minutes").tag(2100)
+                    Text("45 Minutes").tag(2700)
+                    Text("55 Minutes").tag(3300)
+                   
+                }
+                .pickerStyle(SegmentedPickerStyle())
+                .padding()
+                .onChange(of: selectedFocusTime) {
+                                   focusTime = $0
+                                   timeRemaining = $0
+                               }
+               
+                
                 Spacer()
                 
-                Image(systemName: "figure.mind.and.body")
+                Image(systemName: "book")
                     .resizable()
-                    .frame(width: 100, height: 100)
+                    .frame(width: 130, height: 100)
                     .padding()
                 
-            
-        
-                TypewriterText(text: "Meditations Focus")
-                
-                
+                TypewriterText(text: "Book Focus")
                 
                 Spacer()
                 
-                //           timer buttons for control
-                HStack{
-                    //                start and stop button
+                // Timer buttons for control
+                HStack {
+                    // Start and stop button
                     Button {
-                        if isActive{
+                        if isActive {
                             pauseTimer()
-                        }else{
+                        } else {
                             startTimer()
                         }
                     } label: {
                         Text(isActive ? "Pause" : "Start")
                             .frame(width: 120, height: 50)
-                            .background(isActive ? Color.red : Color.blue)
+                            .background(isActive ? Color.red : Color.green)
                             .foregroundColor(.white)
                             .cornerRadius(10)
                     }
@@ -79,22 +90,15 @@ struct MeditationsFocus: View {
                     } label: {
                         Text("Reset")
                             .frame(width: 120, height: 50)
-                            .background(.green)
+                            .background(.purple)
                             .foregroundColor(.white)
                             .cornerRadius(10)
                     }
-                    
                 }
                 
                 Spacer()
-                
-               
-                
             }
- 
-   
         }
-        
         .alert(isPresented: $showAlert) {
             Alert(
                 title: Text("You did it!"),
@@ -102,56 +106,57 @@ struct MeditationsFocus: View {
                 primaryButton: .default(Text("Reboot")) {
                     resetTimer() // Yeniden başlat
                 },
-                secondaryButton: .cancel(Text("OK")){
+                secondaryButton: .cancel(Text("OK")) {
                     resetTimer()
                 }
             )
         }
-
-      
     }
     
     // Start timer
-    func startTimer(){
+    func startTimer() {
         isActive = true
         timer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { _ in
             if timeRemaining > 0 {
                 timeRemaining -= 1
-            }else {
+            } else {
                 pauseTimer()
-//                buraya süre bitince uyarı eklenebilir
-                showAlert = true
-                print("Focus time over!")
+                showAlert = true // Süre bitince uyarı göster
+              
             }
-            
         }
-        
     }
     
-//    timer stop
+    // Timer stop
     func pauseTimer() {
         isActive = false
         timer?.invalidate()
         timer = nil
     }
     
-//    timer reset
-    func resetTimer(){
+    // Timer reset
+    func resetTimer() {
         isActive = false
         pauseTimer()
         timeRemaining = focusTime
     }
-
-    // zamanı dakika ve saniye formatına çevirme
+    
+    // Zamanı dakika ve saniye formatına çevirme
     func timeString(time: Int) -> String {
         let minutes = time / 60
         let seconds = time % 60
-        return String(format: "%02d:%02d", minutes, seconds )
+        return String(format: "%02d:%02d", minutes, seconds)
     }
+    
+    
 }
-
 
 
 #Preview {
-    MeditationsFocus()
+    BookFocus()
 }
+
+
+
+
+
